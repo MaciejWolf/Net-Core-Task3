@@ -20,7 +20,6 @@ namespace Northwind.Domain.Entities
         public short? ReorderLevel { get; set; }
         public bool Discontinued { get; set; }
 
-        public Category Category { get; set; }
         public Supplier Supplier { get; set; }
         public ICollection<OrderDetail> OrderDetails { get; private set; }
     }
