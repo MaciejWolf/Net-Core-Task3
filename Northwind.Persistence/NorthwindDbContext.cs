@@ -14,8 +14,7 @@ namespace Northwind.Persistence
         public DbSet<Room> Rooms { get; set; }
 
         public DbSet<Customer> Customers { get; set; }
-
-        public DbSet<OrderDetail> OrderDetails { get; set; }
+        
 
         public DbSet<Order> Orders { get; set; }
 

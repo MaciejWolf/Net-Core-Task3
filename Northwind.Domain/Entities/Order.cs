@@ -7,7 +7,6 @@ namespace Northwind.Domain.Entities
     {
         public Order()
         {
-            OrderDetails = new HashSet<OrderDetail>();
         }
 
         public int OrderId { get; set; }
@@ -27,6 +26,5 @@ namespace Northwind.Domain.Entities
 
         public Customer Customer { get; set; }
         public Shipper Shipper { get; set; }
-        public ICollection<OrderDetail> OrderDetails { get; private set; }
     }
 }

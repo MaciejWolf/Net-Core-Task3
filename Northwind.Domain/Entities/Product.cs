@@ -6,7 +6,6 @@ namespace Northwind.Domain.Entities
     {
         public Product()
         {
-            OrderDetails = new HashSet<OrderDetail>();
         }
 
         public int ProductId { get; set; }
@@ -21,6 +20,5 @@ namespace Northwind.Domain.Entities
         public bool Discontinued { get; set; }
 
         public Supplier Supplier { get; set; }
-        public ICollection<OrderDetail> OrderDetails { get; private set; }
     }
 }
