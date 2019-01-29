@@ -23,20 +23,7 @@ namespace Northwind.Application.Managers.Commands
                 throw new ArgumentException("Employee and Manager Id must not be the same", nameof(ChangeEmployeeReportToCommand));
             }
 
-            var employee = await _context.Employees
-                .FindAsync(request.EmployeeId);
-
-            var managerExists = await _context.Employees
-                .AnyAsync(e => e.EmployeeId == request.ManagerId, cancellationToken);
-
-            if (employee == null || !managerExists)
-            {
-                // TODO: Handle each case separately
-                throw new ArgumentException("Employee or manager not existing.", nameof(ChangeEmployeeReportToCommand));
-            }
-
-            employee.ReportsTo = request.ManagerId;
-
+   
             await _context.SaveChangesAsync(cancellationToken);
 
             return Unit.Value;

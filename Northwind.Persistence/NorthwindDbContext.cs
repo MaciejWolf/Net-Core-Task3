@@ -15,8 +15,6 @@ namespace Northwind.Persistence
 
         public DbSet<Customer> Customers { get; set; }
 
-        public DbSet<Employee> Employees { get; set; }
-
         public DbSet<EmployeeTerritory> EmployeeTerritories { get; set; }
 
         public DbSet<OrderDetail> OrderDetails { get; set; }

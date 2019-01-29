@@ -17,12 +17,6 @@ namespace Northwind.Persistence.Configurations
                 .HasColumnName("TerritoryID")
                 .HasMaxLength(20);
 
-            builder.HasOne(d => d.Employee)
-                .WithMany(p => p.EmployeeTerritories)
-                .HasForeignKey(d => d.EmployeeId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_EmployeeTerritories_Employees");
-
             builder.HasOne(d => d.Territory)
                 .WithMany(p => p.EmployeeTerritories)
                 .HasForeignKey(d => d.TerritoryId)
