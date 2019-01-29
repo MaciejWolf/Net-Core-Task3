@@ -46,9 +46,6 @@ namespace Northwind.WebApp
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
             services.AddMediatR(typeof(GetProductQueryHandler).GetTypeInfo().Assembly);
 
-            //Add DbContext using SQL Server Provider
-            //services.AddDbContext<NorthwindDbContext>(options =>
-            //    options.UseSqlServer(Configuration.GetConnectionString("NorthwindDatabase")));
 
             services.AddDbContext<NorthwindDbContext>(options =>
                 options.UseInMemoryDatabase("NorthwindDatabase"));
@@ -69,12 +66,6 @@ namespace Northwind.WebApp
             {
                 options.SuppressModelStateInvalidFilter = true;
             });
-
-            // In production, the Angular files will be served from this directory
-            //services.AddSpaStaticFiles(configuration =>
-            //{
-            //    configuration.RootPath = "ClientApp/dist";
-            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -104,7 +95,6 @@ namespace Northwind.WebApp
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            //app.UseSpaStaticFiles();
 
             app.UseMvc(routes =>
             {
@@ -112,20 +102,6 @@ namespace Northwind.WebApp
                     name: "default",
                     template: "{controller}/{action=Index}/{id?}");
             });
-
-
-            //app.UseSpa(spa =>
-            //{
-            //    // To learn more about options for serving an Angular SPA from ASP.NET Core,
-            //    // see https://go.microsoft.com/fwlink/?linkid=864501
-
-            //    spa.Options.SourcePath = "ClientApp";
-
-            //    if (env.IsDevelopment())
-            //    {
-            //        spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
-            //    }
-            //});
         }
     }
 }
