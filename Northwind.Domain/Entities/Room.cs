@@ -8,7 +8,7 @@ namespace Northwind.Domain.Entities
     {
         public Room()
         {
-            //Calendar = new List<int>();
+            //Calendar = new List<DateTime>();
         }
 
         public string Id { get; set; }
@@ -16,6 +16,6 @@ namespace Northwind.Domain.Entities
         public int Floor { get; set; }
         public int Seats { get; set; }
 
-        //public ICollection<int> Calendar { get; private set; }
+        public ICollection<DateTime> Calendar { get; private set; }
     }
 }
