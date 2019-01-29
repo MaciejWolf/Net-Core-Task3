@@ -7,7 +7,7 @@ using System;
 using System.IO;
 using Microsoft.Extensions.Configuration;
 
-namespace Northwind.WebUI
+namespace Northwind.WebApp
 {
     public class Program
     {
@@ -15,21 +15,21 @@ namespace Northwind.WebUI
         {
             var host = CreateWebHostBuilder(args).Build();
 
-            using (var scope = host.Services.CreateScope())
-            {
-                try
-                {
-                    var context = scope.ServiceProvider.GetService<NorthwindDbContext>();
-                    context.Database.Migrate();
+            //using (var scope = host.Services.CreateScope())
+            //{
+            //    try
+            //    {
+            //        var context = scope.ServiceProvider.GetService<NorthwindDbContext>();
+            //        context.Database.Migrate();
 
-                    NorthwindInitializer.Initialize(context);
-                }
-                catch (Exception ex)
-                {
-                    var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
-                    logger.LogError(ex, "An error occurred while migrating or initializing the database.");
-                }
-            }
+            //        NorthwindInitializer.Initialize(context);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+            //        logger.LogError(ex, "An error occurred while migrating or initializing the database.");
+            //    }
+            //}
 
             host.Run();
         }

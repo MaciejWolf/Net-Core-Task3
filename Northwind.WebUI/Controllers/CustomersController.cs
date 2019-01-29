@@ -7,7 +7,7 @@ using Northwind.Application.Customers.Commands.CreateCustomer;
 using Northwind.Application.Customers.Commands.DeleteCustomer;
 using System.Net;
 
-namespace Northwind.WebUI.Controllers
+namespace Northwind.WebApp.Controllers
 {
     public class CustomersController : BaseController
     {

@@ -16,11 +16,11 @@ using Northwind.Application.Products.Queries.GetProduct;
 using Northwind.Common;
 using Northwind.Infrastructure;
 using Northwind.Persistence;
-using Northwind.WebUI.Filters;
+using Northwind.WebApp.Filters;
 using NSwag.AspNetCore;
 using System.Reflection;
 
-namespace Northwind.WebUI
+namespace Northwind.WebApp
 {
     public class Startup
     {
@@ -45,11 +45,16 @@ namespace Northwind.WebUI
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehaviour<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
-            services.AddMediatR(typeof(GetProductQueryHandler).GetTypeInfo().Assembly);            
+            services.AddMediatR(typeof(GetProductQueryHandler).GetTypeInfo().Assembly);
 
-            // Add DbContext using SQL Server Provider
+            //Add DbContext using SQL Server Provider
+            //services.AddDbContext<NorthwindDbContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("NorthwindDatabase")));
+
             services.AddDbContext<NorthwindDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("NorthwindDatabase")));
+                options.UseInMemoryDatabase("NorthwindDatabase"));
+
+            //services.AddDbContext<NorthwindDbContext>();
 
             services
                 .AddMvc(options => options.Filters.Add(typeof(CustomExceptionFilterAttribute)))
@@ -63,10 +68,10 @@ namespace Northwind.WebUI
             });
 
             // In production, the Angular files will be served from this directory
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "ClientApp/dist";
-            });
+            //services.AddSpaStaticFiles(configuration =>
+            //{
+            //    configuration.RootPath = "ClientApp/dist";
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -85,7 +90,7 @@ namespace Northwind.WebUI
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseSpaStaticFiles();
+            //app.UseSpaStaticFiles();
 
             app.UseSwaggerUi3(settings =>
             {
@@ -100,18 +105,18 @@ namespace Northwind.WebUI
                     template: "{controller}/{action=Index}/{id?}");
             });
 
-            app.UseSpa(spa =>
-            {
-                // To learn more about options for serving an Angular SPA from ASP.NET Core,
-                // see https://go.microsoft.com/fwlink/?linkid=864501
+            //app.UseSpa(spa =>
+            //{
+            //    // To learn more about options for serving an Angular SPA from ASP.NET Core,
+            //    // see https://go.microsoft.com/fwlink/?linkid=864501
 
-                spa.Options.SourcePath = "ClientApp";
+            //    spa.Options.SourcePath = "ClientApp";
 
-                if (env.IsDevelopment())
-                {
-                    spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
-                }
-            });
+            //    if (env.IsDevelopment())
+            //    {
+            //        spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
+            //    }
+            //});
         }
     }
 }

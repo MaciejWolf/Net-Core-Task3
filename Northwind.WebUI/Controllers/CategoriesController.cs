@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Northwind.Application.Categories.Models;
 using Northwind.Application.Categories.Queries;
 
-namespace Northwind.WebUI.Controllers
+namespace Northwind.WebApp.Controllers
 {
     public class CategoriesController : BaseController
     {

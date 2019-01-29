@@ -5,7 +5,7 @@ using Northwind.Application.Employees.Commands;
 using Northwind.Application.Employees.Models;
 using Northwind.Application.Employees.Queries;
 
-namespace Northwind.WebUI.Controllers
+namespace Northwind.WebApp.Controllers
 {
     public class AdminController : BaseController
     {

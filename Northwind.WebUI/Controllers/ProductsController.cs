@@ -7,7 +7,7 @@ using Northwind.Application.Products.Commands.UpdateProduct;
 using Northwind.Application.Products.Queries.GetAllProducts;
 using Northwind.Application.Products.Queries.GetProduct;
 
-namespace Northwind.WebUI.Controllers
+namespace Northwind.WebApp.Controllers
 {
     public class ProductsController : BaseController
     {
