@@ -24,18 +24,21 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="wwwroot\api\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="wwwroot\api\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="wwwroot\api\**" />
+    <None Remove="wwwroot\api\**" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Northwind.Application\Northwind.Application.csproj" />
     <ProjectReference Include="..\Northwind.Common\Northwind.Common.csproj" />
     <ProjectReference Include="..\Northwind.Infrastructure\Northwind.Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\api\" />
   </ItemGroup>
   
   <Target Name="NSwag" AfterTargets="Build" Condition="'$(Configuration)' == 'Debug'">
