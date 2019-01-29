@@ -27,12 +27,7 @@ namespace Northwind.Application.Customers.Commands.DeleteCustomer
                 throw new NotFoundException(nameof(Customer), request.Id);
             }
 
-            var hasOrders = _context.Orders.Any(o => o.CustomerId == entity.CustomerId);
-            if (hasOrders)
-            {
-                throw new DeleteFailureException(nameof(Customer), request.Id, "There are existing orders associated with this customer.");
-            }
-
+            
             _context.Customers.Remove(entity);
 
             await _context.SaveChangesAsync(cancellationToken);
