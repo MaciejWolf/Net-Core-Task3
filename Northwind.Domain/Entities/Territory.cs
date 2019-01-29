@@ -12,6 +12,5 @@ namespace Northwind.Domain.Entities
         public string TerritoryDescription { get; set; }
         public int RegionId { get; set; }
 
-        public Region Region { get; set; }
     }
 }

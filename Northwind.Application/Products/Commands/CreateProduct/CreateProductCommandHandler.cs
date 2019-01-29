@@ -26,7 +26,6 @@ namespace Northwind.Application.Products.Commands.CreateProduct
                 Discontinued = request.Discontinued
             };
 
-            _context.Products.Add(entity);
 
             await _context.SaveChangesAsync(cancellationToken);
 

@@ -22,11 +22,7 @@ namespace Northwind.Persistence.Configurations
                 .IsRequired()
                 .HasMaxLength(50);
 
-            builder.HasOne(d => d.Region)
-                .WithMany(p => p.Territories)
-                .HasForeignKey(d => d.RegionId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Territories_Region");
+            
         }
     }
 }

@@ -19,9 +19,7 @@ namespace Northwind.Persistence
 
         public DbSet<Product> Products { get; set; }
 
-        public DbSet<Region> Region { get; set; }
-
-        public DbSet<Shipper> Shippers { get; set; }
+        
 
         public DbSet<Supplier> Suppliers { get; set; }
 
