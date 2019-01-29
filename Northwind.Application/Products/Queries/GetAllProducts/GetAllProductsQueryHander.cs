@@ -23,7 +23,7 @@ namespace Northwind.Application.Products.Queries.GetAllProducts
         public async Task<ProductsListViewModel> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
             // TODO: Set view model state based on user permissions.
-            var products = await _context.Products.OrderBy(p => p.ProductName).Include(p => p.Supplier).ToListAsync(cancellationToken);
+            var products = await _context.Products.OrderBy(p => p.ProductName).ToListAsync(cancellationToken);
 
             var model = new ProductsListViewModel
             {

@@ -26,8 +26,7 @@ namespace Northwind.Application.Products.Queries.GetAllProducts
 
         public void CreateMappings(Profile configuration)
         {
-            configuration.CreateMap<Product, ProductDto>()
-                .ForMember(pDTO => pDTO.SupplierCompanyName, opt => opt.MapFrom(p => p.Supplier != null ? p.Supplier.CompanyName : string.Empty));
+            
         }
     }
 }

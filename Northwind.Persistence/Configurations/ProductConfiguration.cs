@@ -32,10 +32,7 @@ namespace Northwind.Persistence.Configurations
 
             builder.Property(e => e.UnitsOnOrder).HasDefaultValueSql("((0))");
 
-            builder.HasOne(d => d.Supplier)
-                .WithMany(p => p.Products)
-                .HasForeignKey(d => d.SupplierId)
-                .HasConstraintName("FK_Products_Suppliers");
+            
         }
     }
 }
