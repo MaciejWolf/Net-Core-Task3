@@ -16,6 +16,6 @@ namespace Northwind.Domain.Entities
         public int Floor { get; set; }
         public int Seats { get; set; }
 
-        public ICollection<DateTime> Calendar { get; private set; }
+        //public ICollection<DateTime> Calendar { get; private set; }
     }
 }
